@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\ChildProfileController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +30,8 @@ Route::post("/postlogin",[AuthController::class,'postlogin']);
 Route::post('/register',[AuthController::class,'register']);
 
 //Child
-Route::group(['middleware' => 'auth'],function(){
+Route::group(['middleware' => ['auth','checkRole:user']],function(){
     Route::get('/children',[ChildController::class,'children']);
-
     //Form аас post аар өгөгдлүүд шидэх
     Route::post('/children/create',[ChildController::class,'create']);
     
@@ -54,4 +54,8 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('children/{id}/profile/vaccine/{ids}',[ChildController::class,'vaccine']);
     
     Route::post('children/{id}/profile/vaccine/{ids}/save_vaccine',[ChildController::class,'save_vaccine']);
+});
+
+Route::group(['middleware' => ['auth','checkRole:admin,user']],function(){
+    Route::get('/admin',[AdminController::class,'admin']);
 });

@@ -34,6 +34,7 @@ class AuthController extends Controller
         //Оруулсан өгөгдлийг авах
         //return $req->input();
         $user = new User;
+        $user->role = "user";
         $user->surname = $req->surname;
         $user->fullname = $req->fullname;
         $user->email = $req->email;

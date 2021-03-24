@@ -6,11 +6,18 @@
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="/children">St</a>
           </div>
+          @if(auth()->user()->role == 'user')
           <ul class="sidebar-menu">
             <li class="menu-header">Хүүхэд</li>
-            <li><a class="nav-link" href="/children"><i class="fas fa-pencil-ruler"></i> <span>Хүүхэд</span></a></li>
-        
+            <li><a class="nav-link" href="/children"><i class="fas fa-baby"></i> <span>Хүүхэд</span></a></li>
             </ul>
+            @endif
+            @if(auth()->user()->role == 'admin')
+            <ul class="sidebar-menu">
+            <li class="menu-header">Вакцин нэмэх</li>
+            <li><a class="nav-link" href="#"><i class="fas fa-syringe"></i> <span>Вакцин нэмэх</span></a></li>
+            </ul>
+            @endif
 
            
         </aside>
