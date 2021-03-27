@@ -103,14 +103,70 @@
                 </div>
             </div>
           </div>
-          <div id="container">
+          
           <div class="row">
-              <div class="col-12 col-md-6 col-lg-8">
-                <h1>Vaccination Record</h1>
-                  
+          <div class="col-12 col-md-6 col-lg-8">
+          <div class="card">
+                  <div class="card-header">
+                    <h4>Basic DataTables</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-1">
+                        <thead>
+                          <tr>
+                            <th class="text-center">
+                              #
+                            </th>
+                            <th>Нэр</th>
+                            <th>Тайлбар</th>
+                            <th>Хийлгэх онгоо</th>
+                            <th>Үйлдэл</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($vaccines as $item)
+                          <tr>
+                            <td>
+                              {{$item['id']}}
+                            </td>
+                            <td>{{$item['name']}}</td>
+                            <td>{{$item['description']}}</td>
+                            <td>
+                            <?php
+                            $birth = $child->date_of_birth;
+                            $days = $item['day'];
+
+                            $birth2 = strtotime($birth);
+                            $birth2 = strtotime("+$days day", $birth2);
+                            
+                            ?>
+                            {{date('Y/m/d', $birth2)}}
+                            </td>
+                            <td><a href="#" class="btn btn-success">Бүртгэх</a></td>
+                          </tr>
+                        @endforeach
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
             </div>
-    </div>  
-          </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Вакцин түүх</h4>
+                  </div>
+                  <div class="card-body">
+                    2021/6/22 <br>
+                    2021/6/22 <br>
+                    2021/6/22 <br>
+                    2021/6/22 <br>
+                    2021/6/22 
+                  </div>
+                </div>
+              </div>
+            </div>
         </section>
       </div>
       <!-- modal3 -->

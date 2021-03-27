@@ -58,4 +58,6 @@ Route::group(['middleware' => ['auth','checkRole:user']],function(){
 
 Route::group(['middleware' => ['auth','checkRole:admin,user']],function(){
     Route::get('/admin',[AdminController::class,'admin']);
+    Route::get('/vaccine',[AdminController::class,'vaccine']);
+    Route::post('/vaccine/create',[AdminController::class,'addVaccine']);
 });

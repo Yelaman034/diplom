@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Children;
 use App\Models\Growth;
+use App\Models\Vaccine;
 use Illuminate\Support\Facades\DB;
 class ChildProfileController extends Controller
 {
     function profile($id){
         $data = Children::find($id);
         $data2 = Growth::all();
+        $data3 = Vaccine::all();
 
         // //query
         $query = DB::table('childrens')
@@ -19,7 +21,7 @@ class ChildProfileController extends Controller
         ->get();
 
         
-        return view('children.profile',['child' => $data,'growth' => $query]);
+        return view('children.profile',['child' => $data,'growth' => $query,'vaccines' => $data3]);
     }
     function add(Request $req,$idChild){
         // dd($req->all());
@@ -37,4 +39,7 @@ class ChildProfileController extends Controller
 
         return redirect('children/'.$idChild.'/profile');
     }
+
+    
+    
 }

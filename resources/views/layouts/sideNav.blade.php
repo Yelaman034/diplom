@@ -15,7 +15,7 @@
             @if(auth()->user()->role == 'admin')
             <ul class="sidebar-menu">
             <li class="menu-header">Вакцин нэмэх</li>
-            <li><a class="nav-link" href="#"><i class="fas fa-syringe"></i> <span>Вакцин нэмэх</span></a></li>
+            <li><a class="nav-link" href="/vaccine"><i class="fas fa-syringe"></i> <span>Вакцин нэмэх</span></a></li>
             </ul>
             @endif
 
