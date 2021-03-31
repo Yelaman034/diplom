@@ -38,7 +38,7 @@
                     <td>
                     <!-- <a href="/children/{{$child_data->id}}/edit" class="btn btn-warning btn-sm">Засах</a>
                     <a href="/children/{{$child_data->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Хүүхдийн мэдээлэлээ устгах уу?')">Устгах</a> -->
-                    <a href="/children/{{$child_data->id}}/profile" class="btn btn-outline-primary btn-sm">Detail</a>
+                    <a href="/children/{{$child_data->id}}/profile" class="btn btn-outline-primary btn-sm">Дэлгэрэнгүй</a>
                     </td>
                 </tr>
                 @endforeach
@@ -96,8 +96,8 @@
               <label for="studentGender">Хүйс</label>
               <select class="form-control" id="Gender" name="hvis">
                 <option>-- Сонгох --</option>
-                <option value="male">Эр</option>
-                <option value="female">Эм</option>
+                <option value="Хүү">Хүү</option>
+                <option value="Охин">Охин</option>
               </select>
             </div>
             

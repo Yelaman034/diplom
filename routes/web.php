@@ -51,9 +51,9 @@ Route::group(['middleware' => ['auth','checkRole:user']],function(){
     
     
     
-    Route::get('children/{id}/profile/vaccine/{ids}',[ChildController::class,'vaccine']);
+    Route::get('children/{id}/profile/vaccine/{ids}',[ChildProfileController::class,'viewVaccine']);
     
-    Route::post('children/{id}/profile/vaccine/{ids}/save_vaccine',[ChildController::class,'save_vaccine']);
+    Route::post('children/{id}/profile/vaccine/{ids}/record',[ChildProfileController::class,'record']);
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin,user']],function(){

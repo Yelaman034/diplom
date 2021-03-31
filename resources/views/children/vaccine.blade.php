@@ -1,103 +1,106 @@
 @extends('layouts.master')
-@section('content')
-<div class="main">
-    <div class="main-content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-				<div class="card">
+@section("content")
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Вакцин</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="/children/{{$child2->id}}/profile">Профайл</a></div>
+              <div class="breadcrumb-item">Вакцин</div>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-12 col-md-6 col-lg-6">
+          <div class="card">
                   <div class="card-header">
-                    <h4>Вакцин жагсаалт</h4>
-                    <div class="card-header-action">
-                    <button type="button" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#exampleModal">
-                    Вакцин нэмэх
-                </button>
-                    </div>
+                    <h4>
+                    <?php
+                            $birth = $child2->date_of_birth;
+                            $days = $vaccine->day;
+
+                            $birth2 = strtotime($birth);
+                            $birth2 = strtotime("+$days day", $birth2);
+                            
+                            ?>
+                            Хийлгэх шаардлагатай огноо : {{date('Y/m/d', $birth2)}}
+                    </h4>
                   </div>
-                  <div class="card-body p-0">
-                    <div class="table-responsive">
-                      <table class="table table-striped" id="sortable-table">
-                        <thead>
-                        <tr>
-												<th>Нэр</th>
-												<th>Тайлбар</th>
-												<th>Өдөр</th>
-                        <th>Үйлдэл</th>
-											</tr>
-                      </thead>
-                        <tbody>
-                        @foreach($vaccine as $vacc)
-                  <tr>
-                    <td>{{$vacc->name}}</td>
-                    <td>{{$vacc->description}}</td>
-                    <td>{{$vacc->day}}</td>
-                    <td>
-                    <a href="/children/{{$vacc->id}}/edit" class="btn btn-warning btn-sm">Засах</a>
-                    <a href="/children/{{$vacc->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Хүүхдийн мэдээлэлээ устгах уу?')">Устгах</a>
-                    <!-- <a href="/vacc/{{$vacc->id}}/detail" class="btn btn-outline-primary btn-sm">Detail</a>
-                    </td> -->
-                </tr>
-                @endforeach
-                        </tbody>
-                        
-                      </table>
-                      
+                  <div class="card-body">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Тухай</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Вакцин товлол ба тун</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Хариу урвал</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        {{$vaccine->about}}
+                      </div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                      {{$vaccine->dose}}
+                      </div>
+                      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                      {{$vaccine->side_effects}}
+                      </div>
                     </div>
                   </div>
                 </div>
-				</div>	
-			</div>
-		</div>
-	</div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-6">
+              <div class="card">
+                  <div class="card-header">
+                    <h4>Дархлажуулалтын мэдээлэл</h4>
+                  </div>
+                  <div class="card-body">
+        <form action="/children/{{$child2->id}}/profile/vaccine/{{$vaccine->id}}/record" method="POST">
+                    <!-- <div class="alert alert-info">
+                      <b>Note!</b> Not all browsers support HTML5 type input.
+                    </div> -->
+                    @csrf
+                    <div class="form-group">
+                      <label>Вакцины төрөл</label>
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name = "v_ner" value="{{$vaccine->name}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Бүртгэсэн огноо</label>
+                        <input type="date" name = "hiisen_ognoo" class="form-control" id="date"  placeholder="Enter date" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Хийлгэсэн огноо</label>
+                        <input type="date" name = "burtgesen_ognoo" class="form-control" id="date"  placeholder="Enter date">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Өндөр (см)</label>
+                        <input type="text" name = "undur" class="form-control" id="date"  placeholder="Enter undur" value ="{{}}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Жин (кг)</label>
+                        <input type="text" name = "jin" class="form-control" id="date"  placeholder="Enter jin">
+                    </div>          
+                    <div class="form-group">
+                        <label for="studentGender">Шалтгаан</label>
+                        <select class="form-control" id="shaltgan" name="shaltgan">
+                        <option>-- Сонгох --</option>
+                        <option value="sh1">Шалтгаан1</option>                          <option value="sh2">Шалтгаан2</option>
+                         <option value="sh3">Шалтгаан3</option>
+                        </select>
+                    </div>
+                    <div class="card-footer text-right">
+                    <button class="btn btn-primary mr-1" type="submit">Хадгалах</button>
+                    <button class="btn btn-secondary" type="reset">Reset</button>
+                  </div>
+                  </div>    
+                  </form>
+                </div>
+              </div>
+            </div>
+    
+    </section>
 </div>
 
-   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Хүүхэд нэмэх</h5>
-        
-      </div>
-        <!-- FORM -->
-        <div class="modal-body">
-      <form action="/vaccine/create" method="post">
-      @csrf
-        <div class="panel panel-default">
-          <!-- <div class="panel-heading" style="background-color: white;">
-            <div class="row">
-              <div class="col-xs-6">
-                  <h4>Хүүхдийн мэдээлэл нэмэх</h4>
-              </div>
-              </div>
-          </div> -->
-          <div class="panel-body">
-            <div class="form-group">
-              <label for="vaccineName">Нэр</label>
-              <input type="text" class="form-control" id="vname" name="name" placeholder="вакцин нэрээ оруулна уу">
-            </div>
-            <div class="form-group">
-              <label for="studentFName">Тайлбар</label>
-              <input type="text" class="form-control" id="desc" name="description" placeholder="вакцины тайлбар оруулна уу">
-            </div>
-            <div class="form-group">
-            <label for="birthday">Өдөр</label>
-            <input type="number" class="form-control" id="day" name="day"
-            placeholder="хэдэн өдрийн дараа хийх ">
-            </div>
-            
-          </div>
-          
-        </div>
-        </div>
-      
-        <!-- FORM -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" name="submit" class="btn btn-success">НЭМЭХ</button>
-          </form>
-      </div>
-    </div>
-  </div>
-
-@stop
+@endsection

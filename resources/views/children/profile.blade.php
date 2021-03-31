@@ -42,7 +42,7 @@
                       
                       <div class="w-100 d-sm-none"></div>
                       <div class="float-right mt-sm-0 mt-3">
-                        <a href="/children/{{$child->id}}/edit" class="btn btn-warning">Edit child <i class="fas fa-chevron-right"></i></a>
+                        <a href="/children/{{$child->id}}/edit" class="btn btn-warning">Хүүхдийн мэдээлэл засах <i class="fas fa-chevron-right"></i></a>
                       </div>
                     </div>
                   </div>
@@ -108,7 +108,7 @@
           <div class="col-12 col-md-6 col-lg-8">
           <div class="card">
                   <div class="card-header">
-                    <h4>Basic DataTables</h4>
+                    <h4>Вакцинууд</h4>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">
@@ -119,7 +119,6 @@
                               #
                             </th>
                             <th>Нэр</th>
-                            <th>Тайлбар</th>
                             <th>Хийлгэх онгоо</th>
                             <th>Үйлдэл</th>
                           </tr>
@@ -131,7 +130,6 @@
                               {{$item['id']}}
                             </td>
                             <td>{{$item['name']}}</td>
-                            <td>{{$item['description']}}</td>
                             <td>
                             <?php
                             $birth = $child->date_of_birth;
@@ -143,7 +141,7 @@
                             ?>
                             {{date('Y/m/d', $birth2)}}
                             </td>
-                            <td><a href="#" class="btn btn-success">Бүртгэх</a></td>
+                            <td><a href="/children/{{$child->id}}/profile/vaccine/{{$item['id']}}" class="btn btn-success">Бүртгэх</a></td>
                           </tr>
                         @endforeach
                         </tbody>
@@ -158,11 +156,10 @@
                     <h4>Вакцин түүх</h4>
                   </div>
                   <div class="card-body">
-                    2021/6/22 <br>
-                    2021/6/22 <br>
-                    2021/6/22 <br>
-                    2021/6/22 <br>
-                    2021/6/22 
+                    @foreach ($childData as $item)
+                    <h5>{{$item->v_ner}} <span class="badge badge-secondary">Хийгдсэн</span></h5>
+                    @endforeach
+                   
                   </div>
                 </div>
               </div>

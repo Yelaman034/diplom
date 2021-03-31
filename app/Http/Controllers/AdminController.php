@@ -12,12 +12,14 @@ class AdminController extends Controller
     }
     function vaccine(){
         $data = Vaccine::all();
-        return view('children.vaccine',['vaccine' => $data]);
+        return view('admin.addVaccine',['vaccine' => $data]);
     }
     function addVaccine(Request $req){
         $data = new Vaccine;
         $data->name = $req->name;
-        $data->description = $req->description;
+        $data->about = $req->about;
+        $data->dose = $req->dose;
+        $data->side_effects = $req->side_effects;
         $data->day = $req->day;
         $data->save();
         return redirect('/vaccine');

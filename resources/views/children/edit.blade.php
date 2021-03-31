@@ -9,6 +9,7 @@
 								
                 <div class="card">
                   <form action="/children/{{$child->id}}/update" method="post" class="needs-validation" novalidate="">
+                  @csrf
                     <div class="card-header">
                       <h4>Хүүхдийн мэдээлэлээ засах</h4>
                     </div>
