@@ -261,77 +261,39 @@
   </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
   <script>
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title:{
-		text: "Daily High Temperature at Different Beaches"
-	},
-	axisX: {
-		title: "age (months)",
-		includeZero: false,
-		suffix: " months"
-	},		
-	axisY: {
-		title: "Weigth",
-		includeZero: false,
-		suffix: " kg"
-	},
-	legend:{
-		cursor: "pointer",
-		fontSize: 16,
-		itemclick: toggleDataSeries
-	},
-	toolTip:{
-		shared: true
-	},
-	data: [
-	
-	{
-		name: "Nantucket",
-		type: "spline",
-		yValueFormatString: "#0.## °C",
-		showInLegend: true,
-		dataPoints: [
-			{ x: 0, y: 2.5 },
-			{ x: 1, y: 3 },
-			{ x: 2, y: 3.5 },
-			{ x: 3, y: 4 },
-			{ x: 4, y: 4.5 },
-			{ x: 5, y: 5 },
-			{ x: 6, y: 5.5 },
-			{ x: 7, y: 6 },
-			{ x: 8, y: 6.5 },
-			{ x: 9, y: 7 },
-			{ x: 10, y: 7.5 },
-      { x: 11, y: 7.7 },
-      { x: 12, y: 7.85 },
-      { x: 13, y: 7.9 },
-      { x: 14, y: 8.2 },
-      { x: 15, y: 8.4 },
-      { x: 16, y: 8.5 },
-      { x: 17, y: 8.7 },
-      { x: 18, y: 8.8 },
-      { x: 19, y: 8.9 },
-      { x: 20, y: 9 },
-      
-		]
-	}]
+Highcharts.chart('chartContainer', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Monthly Average Temperature'
+    },
+    subtitle: {
+        text: 'Source: WorldClimate.com'
+    },
+    xAxis: {
+        categories: {!!json_encode($categories)!!}
+    },
+    yAxis: {
+        title: {
+            text: 'Temperature (°C)'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'Tokyo',
+        data: {!!json_encode($jins)!!} 
+    }]
 });
-chart.render();
-
-function toggleDataSeries(e){
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	}
-	else{
-		e.dataSeries.visible = true;
-	}
-	chart.render();
-}
-
-}
+              
 </script>
 @endsection

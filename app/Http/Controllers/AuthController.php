@@ -23,6 +23,7 @@ class AuthController extends Controller
     //         $req->session()->put('user',$user);
     //         return redirect('/children');
     //     }
+    
     if(Auth::attempt($req->only('email','password'))){
         return redirect('/children');
     }

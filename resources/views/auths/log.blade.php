@@ -24,7 +24,7 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <img src="{{asset('newTemplate/assets/img/logo1.png')}}" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal"> ^<span class="font-weight-bold">Хүүхдийн эрүүл мэнд</span></h4>
+            <h4 class="text-dark font-weight-normal"> ^<span class="font-weight-bold">Хүүхдийн өсөлт ба дархлажуулалт</span></h4>
             <p class="text-muted">Эхлэхээсээ өмнө бүртгэл байхгүй бол нэвтрэх эсвэл бүртгүүлэх шаардлагатай.</p>
             <form method="POST" action="postlogin" class="needs-validation" novalidate="">
               @csrf

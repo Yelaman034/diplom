@@ -27,7 +27,19 @@ class ChildProfileController extends Controller
         ->where('childrens.id',$id)
         ->get();
 
-        return view('children.profile',['child' => $data,'growth' => $query,'vaccines' => $data3,'childData' => $data4]);
+        //graph
+        $categories = [];
+        $jins = [];
+
+        foreach($data2 as $mp){
+            if($data->id === $mp->c_id){
+                $categories[] = $mp->undur;
+                $jins[] = $mp->jin;
+            }
+            
+        }
+        // dd(json_encode($jins));    
+        return view('children.profile',['child' => $data,'growth' => $query,'vaccines' => $data3,'childData' => $data4,'categories' => $categories,'jins' => $jins]);
     }
     function add(Request $req,$idChild){
         // dd($req->all());

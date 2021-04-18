@@ -22,7 +22,6 @@
 												<th>Нэр</th>
 												<th>Тухай</th>
 												<th>Вакцины товлол</th>
-                        <th>Хариу урвал</th>
                         <th>Өдөр</th>
                         <th>Үйлдэл</th>
 											</tr>
@@ -33,7 +32,6 @@
                     <td>{{$vacc->name}}</td>
                     <td>{{$vacc->about}}</td>
                     <td>{{$vacc->dose}}</td>
-                    <td>{{$vacc->side_effects}}</td>
                     <td>{{$vacc->day}}</td>
                     <td>
                     <a href="/children/{{$vacc->id}}/edit" class="btn btn-warning btn-sm">Засах</a>
@@ -60,7 +58,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Хүүхэд нэмэх</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Вакцин нэмэх</h5>
         
       </div>
         <!-- FORM -->

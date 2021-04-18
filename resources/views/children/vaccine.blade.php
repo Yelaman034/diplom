@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Өндөр (см)</label>
-                        <input type="text" name = "undur" class="form-control" id="date"  placeholder="Enter undur" value ="{{}}" >
+                        <input type="text" name = "undur" class="form-control" id="date"  placeholder="Enter undur" value ="{{20}}" >
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Жин (кг)</label>

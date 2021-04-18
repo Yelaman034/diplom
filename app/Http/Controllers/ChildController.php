@@ -27,7 +27,7 @@ class ChildController extends Controller
         //оруулсан өгөгдлийн харуулах
         // return $req->all();
         // Children::create($req->all());
-     
+       
         if (Auth::check()) {
             // The user is logged in...
             $data = new Children;

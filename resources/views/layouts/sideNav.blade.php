@@ -1,10 +1,10 @@
 <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="/children">Stisla</a>
+            <a href="/children">Child</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="/children">St</a>
+            <a href="/children">Ch</a>
           </div>
           @if(auth()->user()->role == 'user')
           <ul class="sidebar-menu">

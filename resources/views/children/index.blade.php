@@ -12,8 +12,10 @@
                     <button type="button" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#exampleModal">
                 Хүүхэд нэмэх
                 </button>
+
                     </div>
                   </div>
+                 
                   <div class="card-body p-0">
                     <div class="table-responsive">
                       <table class="table table-striped" id="sortable-table">
@@ -64,7 +66,7 @@
       </div>
         <!-- FORM -->
         <div class="modal-body">
-      <form action="/children/create" method="post">
+      <form action="/children/create" method="post" id="validate_form">
       @csrf
         <div class="panel panel-default">
           <!-- <div class="panel-heading" style="background-color: white;">
@@ -75,26 +77,26 @@
               </div>
           </div> -->
           <div class="panel-body">
-            <div class="form-group">
+            <div class="form-group has-error">
               <label for="studentLName">Овог</label>
-              <input type="text" class="form-control" id="LName" name="ovog" placeholder="Жишээ: Лхагвасүрэн">
+              <input type="text" class="form-control" id="LName" name="ovog" placeholder="Жишээ: Лхагвасүрэн" required data-parsley-pattern="[A-Z]" data-parsley-trigger="keyup">
             </div>
             <div class="form-group">
               <label for="studentFName">Нэр</label>
-              <input type="text" class="form-control" id="FName" name="ner" placeholder="Жишээ: Батбаяр">
+              <input type="text" class="form-control" id="FName" name="ner" placeholder="Жишээ: Батбаяр" required data-parsley-pattern="[a-zA-Z]+$" data-parsley-trigger="keyup">
             </div>
             <div class="form-group">
             <label for="birthday">Төрсөн өдөр</label>
-            <input type="date" class="form-control" id="birthday" name="date_of_birth">
+            <input type="date" class="form-control" id="birthday" name="date_of_birth" required>
             </div>
             <div class="form-group">
               <label for="studentId">Регистер дугаар</label>
-              <input type="text" class="form-control" id="rId" name="r_number" placeholder="Регистер дугаар">
+              <input type="text" class="form-control" id="rId" name="r_number" placeholder="Регистер дугаар" required>
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
               <label for="studentGender">Хүйс</label>
-              <select class="form-control" id="Gender" name="hvis">
+              <select class="form-control" id="Gender" name="hvis" required>
                 <option>-- Сонгох --</option>
                 <option value="Хүү">Хүү</option>
                 <option value="Охин">Охин</option>
