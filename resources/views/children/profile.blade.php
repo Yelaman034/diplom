@@ -234,10 +234,6 @@
           </div> -->
           <div class="panel-body">
             <div class="form-group">
-            <label for="birthday">Өсөлтийн үнэлгээнд хамрагдсан хугацаа</label>
-            <input type="date" class="form-control" id="date_of_visit" name="date_of_visit">
-            </div>
-            <div class="form-group">
               <label for="studentId">Жин (кг)</label>
               <input type="text" class="form-control" id="jin" name="jin" placeholder="хүүхдийн жингээ оруулна уу">
             </div>

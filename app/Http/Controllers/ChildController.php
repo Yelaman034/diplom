@@ -27,7 +27,13 @@ class ChildController extends Controller
         //оруулсан өгөгдлийн харуулах
         // return $req->all();
         // Children::create($req->all());
-       
+        $req->validate([
+            'ovog' => ['required','min:4'],
+            'ner' => ['required','min:4'],
+            'r_number' => ['required','size:10','regex:/[А-Я]/','regex:/[0-9]/',  ],
+            'date_of_birth' => ['required'],
+            'hvis' => ['required'],
+        ]);
         if (Auth::check()) {
             // The user is logged in...
             $data = new Children;

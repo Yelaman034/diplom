@@ -10,19 +10,7 @@ use App\Models\User;
 use Auth;
 class AuthController extends Controller
 {
-    //
     function postlogin(Request $req){
-        //return $req->input();
-
-        //return User::where(['email'=>$req->email])->first();
-    //    $user =  User::where(['email'=>$req->email])->first();
-    //     if(!$user || !Hash::check($req->password,$user->password))
-    //     {
-    //         return redirect('/log');
-    //     }else{
-    //         $req->session()->put('user',$user);
-    //         return redirect('/children');
-    //     }
     
     if(Auth::attempt($req->only('email','password'))){
         return redirect('/children');
@@ -34,6 +22,12 @@ class AuthController extends Controller
     function register(Request $req){
         //Оруулсан өгөгдлийг авах
         //return $req->input();
+        $req->validate([
+            'surname' => ['required','min:4'],
+            'fullname' => ['required','min:4'],
+            'email' => ['required','email'],
+            'password' => ['required','min:8']
+        ]);
         $user = new User;
         $user->role = "user";
         $user->surname = $req->surname;

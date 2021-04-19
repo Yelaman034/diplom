@@ -8,6 +8,7 @@ use App\Models\Growth;
 use App\Models\Vaccine;
 use App\Models\ChildVaccineInfo;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class ChildProfileController extends Controller
 {
     function profile($id){
@@ -43,12 +44,18 @@ class ChildProfileController extends Controller
     }
     function add(Request $req,$idChild){
         // dd($req->all());
+        $req->validate([
+            'jin' => ['required','numeric'],
+            'undur' => ['required','numeric'],
+        ]);
         $child = Children::find($idChild);
        
         $bmi =  (double) floor(($req->jin/($req->undur * $req->undur))*10000);
 
         $data = new Growth; 
-        $data->date_of_visit = $req->date_of_visit; 
+        $current = new Carbon();
+
+        $data->date_of_visit = $current;
         $data->jin = $req->jin; 
         $data->undur = $req->undur; 
         $data->bmi = $bmi;
@@ -66,6 +73,7 @@ class ChildProfileController extends Controller
         ->join('child_vaccine_infos','childrens.id', '=', 'child_vaccine_infos.c_id')
         ->where('childrens.id',$id)
         ->get();
+        // dd($data3);
         return view('children.vaccine',['vaccine' => $data,'child2' => $data2,'vacc' => $data3]);
     }
     function record(Request $req,$idChild2,$id){

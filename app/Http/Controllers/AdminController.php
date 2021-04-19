@@ -15,6 +15,13 @@ class AdminController extends Controller
         return view('admin.addVaccine',['vaccine' => $data]);
     }
     function addVaccine(Request $req){
+        $req->validate([
+            'name' => ['required'],
+            'about' => ['required','max:225'],
+            'dose' => ['required','max:255' ],
+            'side_effects' => ['required','max:255'],
+            'day' => ['required','numeric'],
+        ]);
         $data = new Vaccine;
         $data->name = $req->name;
         $data->about = $req->about;

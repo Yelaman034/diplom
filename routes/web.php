@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\ChildProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,10 @@ Route::post('/register',[AuthController::class,'register']);
 
 //Child
 Route::group(['middleware' => ['auth','checkRole:user']],function(){
+
+    Route::get('/profile',[UserProfileController::class,'userProfile']);
+    Route::post('/profile/{id}/update',[UserProfileController::class,'userUpdate']);
+
     Route::get('/children',[ChildController::class,'children']);
     //Form аас post аар өгөгдлүүд шидэх
     Route::post('/children/create',[ChildController::class,'create']);

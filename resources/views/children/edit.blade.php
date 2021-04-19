@@ -15,14 +15,14 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                          <div class="form-group col-md-6 col-12">
+                          <div class="form-group col-md-12 col-12">
                             <label>Овог</label>
                             <input name="ovog" type="text" class="form-control" value="{{$child->ovog}}" required="">   
                             <div class="invalid-feedback">
                               овогоо оруулна уу
                             </div>
                           </div>
-                          <div class="form-group col-md-6 col-12">
+                          <div class="form-group col-md-12 col-12">
                             <label>Нэр</label>
                             <input name="ner" type="text" class="form-control" value="{{$child->ner}}" required="">
                             <div class="invalid-feedback">
@@ -31,14 +31,14 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="form-group col-md-7 col-12">
+                          <div class="form-group col-md-12 col-12">
                             <label>Төрсөн өдөр</label>
                             <input name="date_of_birth" type="date" class="form-control" value="{{$child->date_of_birth}}" required="">
                             <div class="invalid-feedback">
                               төрсөн өдөрөө оруулна уу
                             </div>
                           </div>
-                          <div class="form-group col-md-5 col-12">
+                          <div class="form-group col-md-12 col-12">
                             <label>Регистер дугаар</label>
                             <input name="r_number" type="text" class="form-control" value="{{$child->r_number}}">
                             <div class="invalid-feedback">

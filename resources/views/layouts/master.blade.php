@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Хүүхдийн өсөлт ба дархлажуулалт</title>
-
-   <!-- 2 -->
-  <!-- 2 -->
+  <title>Ecommerce Dashboard &mdash; Stisla</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -45,7 +42,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
- 
   <script src="{{asset('newTemplate/assets/js/stisla.js')}}"></script>
 
   
@@ -53,12 +49,6 @@
   <!-- Template JS File -->
   <script src="{{asset('newTemplate/assets/js/scripts.js')}}"></script>
   <script src="{{asset('newTemplate/assets/js/custom.js')}}"></script>
-
-  <script>
-    $(document).ready(function(){
-    $('#validate_form').parsley();
-    });
-</script>
 
   <!-- Page Specific JS File -->
 </body>

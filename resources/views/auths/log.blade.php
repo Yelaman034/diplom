@@ -88,6 +88,15 @@
    <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
+  <div>
+  @if($errors->any())
+  @foreach($errors->all() as $error)
+  <div class="alert alert-danger" role="alert">
+    {{$error}}
+  </div>
+  @endforeach
+  @endif
+  </div>
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Бүртгүүлэх</h5>
@@ -96,25 +105,37 @@
         </button>
       </div>
       <div class="modal-body">
-      <form action='register' method="POST">
+      <form action='register' method="POST" class="needs-validation" novalidate=""> 
     <div class="form-group">
         @csrf
         <label for="exampleInputEmail1">Овог</label>
-        <input type="text" name = "surname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Овогоо оруулна уу">
+        <input type="text" name = "surname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Овогоо оруулна уу" tabindex="1" required autofocus>
+        <div class="invalid-feedback">
+          овогоо үгээ оруулна уу
+        </div>
     </div>
     <div class="form-group">
         @csrf
         <label for="exampleInputEmail1">Нэр</label>
-        <input type="text" name = "fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="нэр оруулна уу">
+        <input type="text" name = "fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="нэр оруулна уу" tabindex="2" required autofocus>
+        <div class="invalid-feedback">
+          нэрээ үгээ оруулна уу
+        </div>
     </div>
     <div class="form-group">
         @csrf
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="имэйлээ оруулна уу">
+        <label for="exampleInputEmail1">Имэйл</label>
+        <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="имэйлээ оруулна уу" tabindex="3" required autofocus>
+        <div class="invalid-feedback">
+          имэйлээ үгээ оруулна уу
+        </div>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="нууц үг">
+        <label for="exampleInputPassword1">Нууц үг</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="нууц үг" tabindex="4" required autofocus>
+        <div class="invalid-feedback">
+          нууц үг үгээ оруулна уу
+        </div>
     </div>
     
     

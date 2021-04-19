@@ -68,19 +68,43 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Бүртгэсэн огноо</label>
-                        <input type="date" name = "hiisen_ognoo" class="form-control" id="date"  placeholder="Enter date" >
+                        <input type="date" name = "hiisen_ognoo" class="form-control" id="date"  placeholder="Enter date"
+                        @if(!empty($vacc[$vaccine->id-1]->hiisen_ognoo))
+                        value={{$vacc[$vaccine->id-1]->hiisen_ognoo}}
+                        @else
+                        value=''
+                        @endif
+                         >
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Хийлгэсэн огноо</label>
-                        <input type="date" name = "burtgesen_ognoo" class="form-control" id="date"  placeholder="Enter date">
+                        <input type="date" name = "burtgesen_ognoo" class="form-control" id="date"  placeholder="Enter date" 
+                        @if(!empty($vacc[$vaccine->id-1]->burtgesen_ognoo))
+                        value={{$vacc[$vaccine->id-1]->burtgesen_ognoo}}
+                        @else
+                        value=''
+                        @endif
+                        >
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Өндөр (см)</label>
-                        <input type="text" name = "undur" class="form-control" id="date"  placeholder="Enter undur" value ="{{20}}" >
+                        <input type="text" name = "undur" class="form-control" id="date"  placeholder="Enter undur"   
+                        @if(!empty($vacc[$vaccine->id-1]->undur))
+                        value={{$vacc[$vaccine->id-1]->undur}}
+                        @else
+                        value=''
+                        @endif
+                        >
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Жин (кг)</label>
-                        <input type="text" name = "jin" class="form-control" id="date"  placeholder="Enter jin">
+                        <input type="text" name = "jin" class="form-control" id="date"  placeholder="Enter jin" 
+                        @if(!empty($vacc[$vaccine->id-1]->jin))
+                        value={{$vacc[$vaccine->id-1]->jin}}
+                        @else
+                        value=''
+                        @endif
+                        >
                     </div>          
                     <div class="form-group">
                         <label for="studentGender">Шалтгаан</label>
