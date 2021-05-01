@@ -28,6 +28,11 @@
             <p class="text-muted">Эхлэхээсээ өмнө бүртгэл байхгүй бол нэвтрэх эсвэл бүртгүүлэх шаардлагатай.</p>
             <form method="POST" action="postlogin" class="needs-validation" novalidate="">
               @csrf
+              @if(session('aldaa'))
+              <div class="alert alert-danger" role="alert">
+              {{session('aldaa')}}
+              </div>
+              @endif
               <div class="form-group">
                 <label for="email">Имэйл</label>
                 <input id="email" type="email" class="form-control" name="email"placeholder="email@example.com"  tabindex="1" required autofocus>
@@ -71,8 +76,8 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="{{asset('newTemplate/assets/img/unsplash/login-bg.jpg')}}">
-          <div class="absolute-bottom-left index-2">
+        <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="{{asset('newTemplate/assets/img/unsplash/growth.png')}}">
+          <div class="absolute-bottom-left index-2 ">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">
                 <h1 class="mb-2 display-4 font-weight-bold">Өглөөний мэнд</h1>
@@ -109,30 +114,35 @@
     <div class="form-group">
         @csrf
         <label for="exampleInputEmail1">Овог</label>
-        <input type="text" name = "surname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Овогоо оруулна уу" tabindex="1" required autofocus>
+        <input type="text" name = "first_name" class="form-control" id="first_name" placeholder="Овогоо оруулна уу" tabindex="1" required autofocus>
         <div class="invalid-feedback">
           овогоо үгээ оруулна уу
         </div>
     </div>
     <div class="form-group">
-        @csrf
         <label for="exampleInputEmail1">Нэр</label>
-        <input type="text" name = "fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="нэр оруулна уу" tabindex="2" required autofocus>
+        <input type="text" name = "last_name" class="form-control" id="last_name"  placeholder="нэр оруулна уу" tabindex="2" required autofocus>
         <div class="invalid-feedback">
           нэрээ үгээ оруулна уу
         </div>
     </div>
     <div class="form-group">
-        @csrf
+        <label for="exampleInputEmail1">Утасны дугаар</label>
+        <input type="text" name = "phone_number" class="form-control" id="phone_number"  placeholder="утасны дугаараа оруулна уу" tabindex="3" required autofocus>
+        <div class="invalid-feedback">
+          утасны дугаараа оруулна уу
+        </div>
+    </div>
+    <div class="form-group">
         <label for="exampleInputEmail1">Имэйл</label>
-        <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="имэйлээ оруулна уу" tabindex="3" required autofocus>
+        <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="имэйлээ оруулна уу" tabindex="4" required autofocus>
         <div class="invalid-feedback">
           имэйлээ үгээ оруулна уу
         </div>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Нууц үг</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="нууц үг" tabindex="4" required autofocus>
+        <input type="password" name="password" class="form-control" id="password" placeholder="нууц үг" tabindex="4" required autofocus>
         <div class="invalid-feedback">
           нууц үг үгээ оруулна уу
         </div>

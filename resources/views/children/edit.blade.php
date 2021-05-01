@@ -17,14 +17,14 @@
                         <div class="row">
                           <div class="form-group col-md-12 col-12">
                             <label>Овог</label>
-                            <input name="ovog" type="text" class="form-control" value="{{$child->ovog}}" required="">   
+                            <input name="fname" type="text" class="form-control" value="{{$child->fname}}" required="">   
                             <div class="invalid-feedback">
                               овогоо оруулна уу
                             </div>
                           </div>
                           <div class="form-group col-md-12 col-12">
                             <label>Нэр</label>
-                            <input name="ner" type="text" class="form-control" value="{{$child->ner}}" required="">
+                            <input name="lname" type="text" class="form-control" value="{{$child->lname}}" required="">
                             <div class="invalid-feedback">
                               нэрээ оруулна уу
                             </div>
@@ -40,7 +40,7 @@
                           </div>
                           <div class="form-group col-md-12 col-12">
                             <label>Регистер дугаар</label>
-                            <input name="r_number" type="text" class="form-control" value="{{$child->r_number}}">
+                            <input name="register_number" type="text" class="form-control" value="{{$child->register_number}}">
                             <div class="invalid-feedback">
                               регистер оруулна уу
                             </div>
@@ -49,10 +49,10 @@
                         <div class="row">
                           <div class="form-group col-12">
                             <label>Хүйс</label>
-                            <select class="form-control" id="Gender" name="hvis">
+                            <select class="form-control" id="Gender" name="gender">
                                 <option>-- Сонгох --</option>
-                                <option value="male"   @if($child->hvis == "male") selected @endif>Эр</option>
-                                <option value="female" @if($child->hvis == "female") selected @endif>Эм</option>
+                                <option value="male"   @if($child->gender == "эрэгтэй") selected @endif>эрэгтэй</option>
+                                <option value="female" @if($child->gender == "эмэгтэй") selected @endif>эмэгтэй</option>
                               </select>
                               <div class="invalid-feedback">
                               хүйсээ оруулна уу

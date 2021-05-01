@@ -12,7 +12,7 @@
           </div>
           <div class="section-body">
             <h2 class="section-title"><small>САЙН БАЙНА УУ !</small>
-, {{$data[0]->fullname}}</h2>
+, {{$data->last_name}}</h2>
 
             <div class="row mt-sm-4">
               <div class="col-12 col-md-12 col-lg-5">
@@ -66,7 +66,7 @@
                     @endif
                   </div>
                 <div class="card">
-                  <form method="post" action="/profile/{{$data[0]->id}}/update" >
+                  <form method="post" action="/profile/{{$data->id}}/update" >
                   @csrf
                     <div class="card-header">
                       <h4>Хэрэглэгчийн мэдээлэл засах</h4>
@@ -75,23 +75,31 @@
                         <div class="row">
                           <div class="form-group col-md-12 col-12">
                             <label>Овог</label>
-            <input type="text" name="surname"class="form-control" value={{$data[0]->surname}} required="">
+                                    <input type="text" name="first_name" class="form-control" value={{$data->first_name}} required="">
                             <div class="invalid-feedback">
                               Please fill in the first name
                             </div>
                           </div>
                           <div class="form-group col-md-12 col-12">
                             <label>Нэр</label>
-                            <input type="text" name="fullname" class="form-control" value={{$data[0]->fullname}} required="">
+                            <input type="text" name="last_name" class="form-control" value={{$data->last_name}} required="">
+                            <div class="invalid-feedback">
+                              Please fill in the last name
+                            </div>
+                          </div>
+                          <div class="form-group col-md-12 col-12">
+                            <label>Утасны дугаар</label>
+                            <input type="text" name="phone_number" class="form-control" value={{$data->phone_number}} required="">
                             <div class="invalid-feedback">
                               Please fill in the last name
                             </div>
                           </div>
                         </div>
+                        
                         <div class="row">
                           <div class="form-group col-md-12 col-12">
                             <label>Имэйл</label>
-                            <input type="email" name="email" class="form-control" value={{$data[0]->email}} required="">
+                            <input type="email" name="email" class="form-control" value={{$data->email}} required="">
                             <div class="invalid-feedback">
                               Please fill in the email
                             </div>
@@ -99,6 +107,7 @@
                           
                         </div>
                     </div>
+                    
                     <div class="card-footer text-right">
                       <button class="btn btn-primary">Хадгалах</button>
                     </div>

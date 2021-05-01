@@ -14,17 +14,20 @@ class UserProfileController extends Controller
         // $data = User::all();
 
         $userId = Auth::user()->id;
-        $data =  DB::table('users')
-        ->join('childrens','users.id','=','childrens.p_id')
-        ->where('users.id',$userId)
-        ->get();
-        // dd($data[0]->fullname);
+
+        $data = User::find($userId);
+        // $data =  DB::table('users')
+        // ->join('childrens','users.id','=','childrens.user_id')
+        // ->where('users.id',$userId)
+        // ->get();
+        // dd($data);
         return view('user.profile',['data' => $data]);
     }
     function userUpdate(Request $req,$id){
         $req->validate([
-            'surname' => ['required','min:4'],
-            'fullname' => ['required','min:4'],
+            'first_name' => ['required','min:4'],
+            'last_name' => ['required','min:4'],
+            'phone_number' => ['required','numeric'],
             'email' => ['required','email'],
         ]);
         $user = User::find($id);

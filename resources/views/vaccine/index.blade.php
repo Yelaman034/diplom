@@ -64,56 +64,26 @@
                     @csrf
                     <div class="form-group">
                       <label>Вакцины төрөл</label>
-                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name = "v_ner" value="{{$vaccine->name}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Бүртгэсэн огноо</label>
-                        <input type="date" name = "hiisen_ognoo" class="form-control" id="date"  placeholder="Enter date"
-                        @if(!empty($vacc[$vaccine->id-1]->hiisen_ognoo))
-                        value={{$vacc[$vaccine->id-1]->hiisen_ognoo}}
-                        @else
-                        value=''
-                        @endif
-                         >
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name = "name" value="{{$vaccine->name}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Хийлгэсэн огноо</label>
-                        <input type="date" name = "burtgesen_ognoo" class="form-control" id="date"  placeholder="Enter date" 
-                        @if(!empty($vacc[$vaccine->id-1]->burtgesen_ognoo))
-                        value={{$vacc[$vaccine->id-1]->burtgesen_ognoo}}
-                        @else
-                        value=''
-                        @endif
-                        >
+                        <input type="date" name = "give_date" class="form-control" id="date"  placeholder="Enter date"
+                         >
                     </div>
+                    
                     <div class="form-group">
                         <label for="exampleInputEmail1">Өндөр (см)</label>
-                        <input type="text" name = "undur" class="form-control" id="date"  placeholder="Enter undur"   
-                        @if(!empty($vacc[$vaccine->id-1]->undur))
-                        value={{$vacc[$vaccine->id-1]->undur}}
-                        @else
-                        value=''
-                        @endif
+                        <input type="text" name = "height" class="form-control" id="date"  placeholder="Enter undur"   
+                        
                         >
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Жин (кг)</label>
-                        <input type="text" name = "jin" class="form-control" id="date"  placeholder="Enter jin" 
-                        @if(!empty($vacc[$vaccine->id-1]->jin))
-                        value={{$vacc[$vaccine->id-1]->jin}}
-                        @else
-                        value=''
-                        @endif
+                        <input type="text" name = "weigth" class="form-control" id="date"  placeholder="Enter jin" 
+                        
                         >
                     </div>          
-                    <div class="form-group">
-                        <label for="studentGender">Шалтгаан</label>
-                        <select class="form-control" id="shaltgan" name="shaltgan">
-                        <option>-- Сонгох --</option>
-                        <option value="sh1">Шалтгаан1</option>                          <option value="sh2">Шалтгаан2</option>
-                         <option value="sh3">Шалтгаан3</option>
-                        </select>
-                    </div>
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Хадгалах</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Children extends Model
 {
     use HasFactory;
-    protected $fillable = ['ovog','ner','r_number','date_of_birth','hvis','p_id'];
+    protected $fillable = ['fname','lname','register_number','date_of_birth','gender','user_id'];
 }

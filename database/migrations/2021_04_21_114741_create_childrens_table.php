@@ -15,12 +15,12 @@ class CreateChildrensTable extends Migration
     {
         Schema::create('childrens', function (Blueprint $table) {
             $table->id();
-            $table->string('ovog');
-            $table->string('ner');
-            $table->string('r_number');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('register_number');
             $table->date('date_of_birth');
-            $table->string('hvis');
-            $table->integer('p_id');
+            $table->string('gender');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

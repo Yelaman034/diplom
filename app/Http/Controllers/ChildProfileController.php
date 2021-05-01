@@ -6,92 +6,53 @@ use Illuminate\Http\Request;
 use App\Models\Children;
 use App\Models\Growth;
 use App\Models\Vaccine;
-use App\Models\ChildVaccineInfo;
+use App\Models\VaccineRegInfo;
+use App\Models\Chart;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+
+use Auth;
 class ChildProfileController extends Controller
 {
     function profile($id){
-        $data = Children::find($id);
-        $data2 = Growth::all();
+        $dataChild = Children::find($id);
+        $dataVaccine = Vaccine::orderBy('day')->get();
+
         // //query
-        $query = DB::table('childrens')
+        $queryGrowth = DB::table('childrens')
         ->join('growths','childrens.id', '=', 'growths.c_id')
         ->where('childrens.id',$id)
-        ->get();
+        ->paginate(3);
 
-        $data3 = Vaccine::all();
+        
 
-        // $data4 = ChildVaccineInfo::all();
-        $data4 = DB::table('childrens')
-        ->join('child_vaccine_infos','childrens.id', '=', 'child_vaccine_infos.c_id')
+        // $data4 = VaccineRegInfo::all();
+        $dataVaccRegInfo = DB::table('childrens')
+        ->join('vaccine_reg_infos','childrens.id', '=', 'vaccine_reg_infos.child_id')
         ->where('childrens.id',$id)
         ->get();
+        // dd($dataVaccRegInfo);
 
-        //graph
-        $categories = [];
-        $jins = [];
+        
 
-        foreach($data2 as $mp){
-            if($data->id === $mp->c_id){
-                $categories[] = $mp->undur;
-                $jins[] = $mp->jin;
-            }
+
+
+
+        // //graph
+        // $undurs = [];
+        // $jins = [];
+        // $dataGrowth = Growth::all();
+        // foreach($dataGrowth as $mp){
+        //     if($dataChild->id === $mp->c_id){
+        //         $undurs[] = $mp->undur;
+        //         $jins[] = $mp->jin;
+        //     }
             
-        }
-        // dd(json_encode($jins));    
-        return view('children.profile',['child' => $data,'growth' => $query,'vaccines' => $data3,'childData' => $data4,'categories' => $categories,'jins' => $jins]);
+        // }
+        // dd(json_encode($jins)); 
+        return view('children.profile',['child' => $dataChild,'growth' => $queryGrowth,'vaccines' => $dataVaccine,'dataVaccRegInfo' => $dataVaccRegInfo]);
     }
-    function add(Request $req,$idChild){
-        // dd($req->all());
-        $req->validate([
-            'jin' => ['required','numeric'],
-            'undur' => ['required','numeric'],
-        ]);
-        $child = Children::find($idChild);
-       
-        $bmi =  (double) floor(($req->jin/($req->undur * $req->undur))*10000);
-
-        $data = new Growth; 
-        $current = new Carbon();
-
-        $data->date_of_visit = $current;
-        $data->jin = $req->jin; 
-        $data->undur = $req->undur; 
-        $data->bmi = $bmi;
-        $data->c_id = $idChild;
-        $data->save(); 
-
-        return redirect('children/'.$idChild.'/profile');
-    }
-
-    function viewVaccine(Request $req, $id, $ids){
-        $data = Vaccine::find($ids);
-        $data2 = Children::find($id);
-        // $data3 = ChildVaccineInfo::all();
-        $data3 = DB::table('childrens')
-        ->join('child_vaccine_infos','childrens.id', '=', 'child_vaccine_infos.c_id')
-        ->where('childrens.id',$id)
-        ->get();
-        // dd($data3);
-        return view('children.vaccine',['vaccine' => $data,'child2' => $data2,'vacc' => $data3]);
-    }
-    function record(Request $req,$idChild2,$id){
-        $child2 = Children::find($idChild2);
-        $vacc = Vaccine::find($id);
-
-        $data2 = new ChildVaccineInfo; 
-        $data2->v_ner = $vacc->name;
-        $data2->undur = $req->undur; 
-        $data2->jin = $req->jin; 
-        $data2->shaltgan = $req->shaltgan;
-        $data2->hiisen_ognoo = $req->hiisen_ognoo;
-        $data2->burtgesen_ognoo = $req->burtgesen_ognoo;
-        $data2->v_id = $vacc->id;
-        $data2->c_id = $child2->id;
-        $data2->save();
-
-        return redirect('children/'.$idChild2.'/profile');
-    }
+    
+    
     
 }

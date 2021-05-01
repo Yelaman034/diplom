@@ -16,6 +16,7 @@ class CreateGrowthsTable extends Migration
         Schema::create('growths', function (Blueprint $table) {
             $table->id();
             $table->date('date_of_visit');
+            $table->double('age');
             $table->double('jin');
             $table->double('undur');
             $table->double('bmi');

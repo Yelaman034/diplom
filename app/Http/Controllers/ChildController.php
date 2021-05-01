@@ -15,52 +15,54 @@ class ChildController extends Controller
         // return view('children.index',['child' => $data]);
 
         $userId = Auth::user()->id;
-        $data =  DB::table('users')
-        ->join('childrens','users.id','=','childrens.p_id')
-        ->where('childrens.p_id',$userId)
+        $childrens =  DB::table('users')
+        ->join('childrens','users.id','=','childrens.user_id')
+        ->where('childrens.user_id',$userId)
         ->get();
 
-        return view('children.index',['child' => $data]);
+        return view('children.index',['child' => $childrens]);
     }
-    function create(Request $req){
+    function addChild(Request $req){
        
         //оруулсан өгөгдлийн харуулах
         // return $req->all();
         // Children::create($req->all());
         $req->validate([
-            'ovog' => ['required','min:4'],
-            'ner' => ['required','min:4'],
-            'r_number' => ['required','size:10','regex:/[А-Я]/','regex:/[0-9]/',  ],
+            'fname' => ['required','min:4'],
+            'lname' => ['required','min:4'],
+            'register_number' => ['required','size:8','regex:/[0-9]/',],
             'date_of_birth' => ['required'],
-            'hvis' => ['required'],
+            'gender' => ['required'],
         ]);
+
+        $register_number = $req->r1 . $req->r2 . $req->register_number;
         if (Auth::check()) {
             // The user is logged in...
             $data = new Children;
-            $data->ovog = $req->ovog;
-            $data->ner = $req->ner;
-            $data->r_number = $req->r_number;
+            $data->fname = $req->fname;
+            $data->lname = $req->lname;
+            $data->register_number = $register_number;
             $data->date_of_birth = $req->date_of_birth;
-            $data->hvis = $req->hvis;
-            $data->p_id = Auth::id();
+            $data->gender = $req->gender;
+            $data->user_id = Auth::id();
             $data->save();
             return redirect('/children');
         }
         
     } 
-    function edit($id){
-        $dataChild = Children::find($id);
-        return view('children.edit',['child' => $dataChild]);
+    function editChild($id){
+        $childrenFind = Children::find($id);
+        return view('children.edit',['child' => $childrenFind]);
     }
 
-    function update(Request $req, $id){
-        $dataChild = Children::find($id);
-        $dataChild->update($req->all());
+    function updateChild(Request $req, $id){
+        $childrenFind = Children::find($id);
+        $childrenFind->update($req->all());
         return redirect('/children');
     }
-    function delete($id){
-        $dataChild = Children::find($id);
-        $dataChild->delete($dataChild);
+    function deleteChild($id){
+        $childrenFind = Children::find($id);
+        $childrenFind->delete($childrenFind);
         return redirect('/children')->with('success','Амжилттай устгагдлаа!!!');
     }
     

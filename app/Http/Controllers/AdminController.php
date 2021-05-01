@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Vaccine;
+use App\Models\User;
 class AdminController extends Controller
 {
     function admin(){
@@ -30,5 +31,13 @@ class AdminController extends Controller
         $data->day = $req->day;
         $data->save();
         return redirect('/vaccine');
+    }
+
+    function consumer(){
+        $consumers = User::all();
+
+        // dd($consumers);
+
+        return view('admin.consumer',['consumer' => $consumers]);
     }
 }
