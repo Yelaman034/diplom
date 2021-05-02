@@ -64,26 +64,18 @@
                     @csrf
                     <div class="form-group">
                       <label>Вакцины төрөл</label>
-                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name = "name" value="{{$vaccine->name}}">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name = "vaccine_name" value="{{$vaccine->name}}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Хийлгэсэн огноо</label>
+                        <label for="exampleInputEmail1">Вакцинжуулсан огноо</label>
                         <input type="date" name = "give_date" class="form-control" id="date"  placeholder="Enter date"
                          >
                     </div>
-                    
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Өндөр (см)</label>
-                        <input type="text" name = "height" class="form-control" id="date"  placeholder="Enter undur"   
-                        
+                        <label for="exampleInputEmail1">Дархлаажуулалт хийсэн байгууллага</label>
+                        <input type="text" name = "hospital" class="form-control" id="hospital"  placeholder="дархлаажуулалт хийсэн эрүүл мэндийн байгууллага оруулна уу"  
                         >
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Жин (кг)</label>
-                        <input type="text" name = "weigth" class="form-control" id="date"  placeholder="Enter jin" 
-                        
-                        >
-                    </div>          
+                    </div>       
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Хадгалах</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>

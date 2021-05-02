@@ -39,7 +39,7 @@ class GrowthController extends Controller
             'undur' => ['required','numeric'],
         ]);
         // dd($req->all());
-        $growth = Growth::findOrFail($req->id);
+        $growth = Growth::findOrFail($req->id); 
         // dd($growth);
 
         $growth->update($req->all());

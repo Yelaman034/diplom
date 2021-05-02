@@ -16,9 +16,8 @@ class CreateVaccineRegInfosTable extends Migration
         Schema::create('vaccine_reg_infos', function (Blueprint $table) {
             $table->id();
             $table->string('vaccine_name');
-            $table->double('weigth');
-            $table->double('height');
             $table->date('give_date');
+            $table->string('hospital');
             $table->integer('vaccine_id');
             $table->integer('child_id');
             $table->timestamps();

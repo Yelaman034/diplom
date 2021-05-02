@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="{{asset('newTemplate/assets/img/unsplash/growth.png')}}">
-          <div class="absolute-bottom-left index-2 ">
+          <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">
                 <h1 class="mb-2 display-4 font-weight-bold">Өглөөний мэнд</h1>
@@ -141,8 +141,8 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Нууц үг</label>
-        <input type="password" name="password" class="form-control" id="password" placeholder="нууц үг" tabindex="4" required autofocus>
+        <label for="exampleInputPassword9">Нууц үг</label>
+        <input type="password" name="password" class="form-control" id="password2" placeholder="нууц үг" tabindex="4" required autofocus>
         <div class="invalid-feedback">
           нууц үг үгээ оруулна уу
         </div>

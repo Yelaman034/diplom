@@ -57,21 +57,17 @@
                       >
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Хийлгэсэн огноо</label>
+                        <label for="exampleInputEmail1">Вакцинжуулсан огноо</label>
                         <input type="date" name = "give_date" class="form-control" id="date"  placeholder="Enter date" value="{{$vaccineRegFind->give_date}}"
                          >
                     </div>
                     
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Өндөр (см)</label>
-                        <input type="text" name = "height" class="form-control" id="date"  placeholder="Enter undur" value="{{$vaccineRegFind->height}}"
+                        <label for="exampleInputEmail1">Дархлаажуулалт хийсэн байгууллага</label>
+                        <input type="text" name = "hospital" class="form-control" id="hospital"  placeholder="дархлаажуулалт хийсэн эрүүл мэндийн байгууллага оруулна уу" value="{{$vaccineRegFind->hospital}}"
                         >
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Жин (кг)</label>
-                        <input type="text" name = "weigth" class="form-control" id="date"  placeholder="Enter jin" value="{{$vaccineRegFind->weigth}}"
-                        >
-                    </div>          
+                    </div>      
+                        
                     <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Шинэчлэх</button>
                     <button class="btn btn-secondary" type="reset">Reset</button>

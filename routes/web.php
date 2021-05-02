@@ -77,6 +77,11 @@ Route::group(['middleware' => ['auth','checkRole:user']],function(){
     Route::get('children/{id}/vaccineReg/{ids}/edit',[VaccineController::class,'editVaccineRegistration']);
     Route::post('children/{id}/vaccineReg/{ids}/update/',[VaccineController::class,'updateVaccineRegistration']);
 
+    //new vaccine reg modal
+    Route::post('children/{id}/vaccRecord',[VaccineController::class,'vaccineRegNew']);
+    
+    Route::post('/children/{id}/vaccRecordEdit',[VaccineController::class,'vaccineRegUpdateNew']);
+
 
 
     

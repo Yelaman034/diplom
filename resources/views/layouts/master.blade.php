@@ -75,14 +75,32 @@ $('#delete').on('show.bs.modal', function (event) {
     var modal = $(this)
     modal.find('.modal-body #datas_id').val(datas_id)
 })
-$('#vinfo').on('show.bs.modal', function (event) {
+$('#vaccineReg').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
-    var about = button.data('myabout') // Extract info from data-* attributes
-    var side = button.data('myside')
-    var dose = button.data('mydose')
+    var vaccinename = button.data('myvaccinename') 
+    var vaccineid = button.data('myvaccineid') 
+    
 
     var modal = $(this)
-    modal.find('.modal-body #about').val(about)
+    modal.find('.modal-body #vaccine_name').val(vaccinename)
+    modal.find('.modal-body #vaccine_id').val(vaccineid)
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    
+})
+$('#editVaccineReg').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var vaccineregid = button.data('myvaccineregid') 
+    var vaccinename = button.data('myvaccinename') 
+    var vaccinegivedate = button.data('myvaccinegivedate') 
+    var vaccinehospital = button.data('myvaccinehospital') 
+    
+
+    var modal = $(this)
+    modal.find('.modal-body #vaccinereg_id').val(vaccineregid)
+    modal.find('.modal-body #vaccine_name').val(vaccinename)
+    modal.find('.modal-body #give_date').val(vaccinegivedate)
+    modal.find('.modal-body #hospital').val(vaccinehospital)
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     

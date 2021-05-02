@@ -125,10 +125,9 @@ Highcharts.chart('chartContainer', {
         text: 'Source: WorldClimate.com'
     },
     
-    xAxis: {
+    xAxis: 
+        {
         categories: {!!json_encode($age)!!},
-        categories2: {!!json_encode($nas)!!},
-        
     },
     yAxis: {
         title: {
@@ -216,7 +215,9 @@ var chart = new CanvasJS.Chart("chartContainer2", {
 			{ x: 0.5, y: 70.1 },
 			{ x: 0.6, y: 71.9 }
 		]
-	}
+	},
+   
+    
 	]
 });
 chart.render();

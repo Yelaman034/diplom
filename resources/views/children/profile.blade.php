@@ -16,7 +16,7 @@
 			  <div class="card author-box card-primary">
                   <div class="card-body">
                     <div class="author-box-left">
-                      <img alt="image" src="{{asset('newTemplate/assets/img/avatar/avatar-1.png')}}" class="rounded-circle author-box-picture">
+                      <img alt="image" src="{{asset('newTemplate/assets/img/avatar/4-01.jpg')}}" class="rounded-circle author-box-picture">
                       <div class="clearfix"></div>
                       <!-- <a href="#" class="btn btn-primary mt-3 follow-btn" data-follow-action="alert('follow clicked');" data-unfollow-action="alert('unfollow clicked');">{{$child->lname}}</a> -->
                     </div>
@@ -30,8 +30,9 @@
                        $interval = $birth->diff($today);
                       ?>
                      <div class="author-box-job"><h5>{{$interval->format('%y нас %m сар ба %d өдөр')}}</h5></div>
-                      <div class="author-box-description">
-                        <p>Хүүхдийн мэдээлэл</p>
+                     <br>
+                      <div class="author-box-description" >
+                        <p><strong>Хүүхдийн мэдээлэл</strong></p>
                         <ul class="list-group list-group-flush">
                           <li class="list-group-item"><strong>Төрсөн огноо:</strong>{{$child->date_of_birth}}</li>
                           <li class="list-group-item"> <strong>Регистер дугаар:</strong>
@@ -122,7 +123,7 @@
                               #
                             </th>
                             <th>Нэр</th>
-                            <th>Хийлгэх онгоо</th>
+                            <th>Хийлгэх огноо</th>
                             <th>Үйлдэл</th>
                           </tr>
                         </thead>
@@ -166,7 +167,11 @@
                           ?>
                             @foreach($dataVaccRegInfo as $vaccRegInfo)
                             @if($item->id == $vaccRegInfo->vaccine_id)
-            <a href="/children/{{$child->id}}/vaccineReg/{{$vaccRegInfo->id}}/edit" class="btn btn-success">Бүртгэсэн</a>
+            <!-- <a href="/children/{{$child->id}}/vaccineReg/{{$vaccRegInfo->id}}/edit" class="btn btn-success">Бүртгэсэн</a> -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editVaccineReg" data-myvaccineregid="{{$vaccRegInfo->id}}"
+             data-myvaccinename="{{$vaccRegInfo->vaccine_name}}" data-myvaccinegivedate="{{$vaccRegInfo->give_date}}" data-myvaccinehospital="{{$vaccRegInfo->hospital}}">
+             Бүртгэсэн
+            </button>
                          <?php
                           $found = true;
                          ?>
@@ -174,7 +179,11 @@
                             @endif
                             @endforeach
                             @if(!$found)
-                            <a href="/children/{{$child->id}}/profile/vaccine/{{$item['id']}}" class="btn  btn-primary">Бүртгэх</a>
+                            <!-- <a href="/children/{{$child->id}}/profile/vaccine/{{$item['id']}}" class="btn  btn-primary">Бүртгэх</a> -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vaccineReg" data-myvaccinename="{{$item['name']}}"
+                            data-myvaccineid="{{$item['id']}}">
+                            Бүртгэх
+                            </button>
                             @endif
                             
                             
@@ -196,8 +205,13 @@
                   <div class="card-body">
                   
                     @foreach ($dataVaccRegInfo as $item)
+                    <div>
                     <span>{{$item->vaccine_name}}</span>
+                    
+                    </div>
+                    <div>
                     <a href="/children/{{$child->id}}/profile/vaccine/{{$item->id}}/edit" class="btn btn-success">Хийсэн</a>
+                    </div>
                     @endforeach
                    
                   </div>
@@ -206,6 +220,114 @@
             </div>
         </section>
       </div>
+      <!-- edit Vaccine Reg  -->
+      <div class="modal fade" id="editVaccineReg" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editlabel">Дархлаажуулалтын мэдээлэл бүртгэх</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/children/{{$child->id}}/vaccRecordEdit" method="POST">
+      @csrf
+      <div class="modal-body">
+      
+      <div class="container">
+
+        <div class="panel panel-default">
+          <!-- <div class="panel-heading" style="background-color: white;">
+            <div class="row">
+              <div class="col-xs-6">
+                  <h4>Хүүхдийн мэдээлэл нэмэх</h4>
+              </div>
+              </div>
+          </div> -->
+          <div class="panel-body">
+          <input type="hidden" class="form-control" id="vaccinereg_id" name="vaccinereg_id" value="">
+          <div class="form-group">
+                      <label>Вакцины төрөл</label>
+                      <input type="text" readonly class="form-control-plaintext" id="vaccine_name" name = "vaccine_name" value="">
+          </div>
+            
+          <div class="form-group">
+                        <label for="exampleInputEmail1">Вакцинжуулсан огноо</label>
+                        <input type="date" name = "give_date" class="form-control" id="give_date"  placeholder="Enter date" value=""
+                         >
+                    </div>
+            <div class="form-group">
+                        <label for="exampleInputEmail1">Дархлаажуулалт хийсэн байгууллага</label>
+                        <input type="text" name = "hospital" class="form-control" id="hospital"  placeholder="дархлаажуулалт хийсэн эрүүл мэндийн байгууллага оруулна уу"  value=""
+                        >
+              </div>
+          </div>
+          </div>
+          </div>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Гарах</button>
+        <button type="submit" name="submit" class="btn btn-success">Хадгалах</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+ <!-- vaccine Reg      -->
+ <div class="modal fade" id="vaccineReg" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editlabel">Дархлаажуулалтын мэдээлэл бүртгэх</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/children/{{$child->id}}/vaccRecord" method="POST">
+      @csrf
+      <div class="modal-body">
+      
+      <div class="container">
+
+        <div class="panel panel-default">
+          <!-- <div class="panel-heading" style="background-color: white;">
+            <div class="row">
+              <div class="col-xs-6">
+                  <h4>Хүүхдийн мэдээлэл нэмэх</h4>
+              </div>
+              </div>
+          </div> -->
+          <div class="panel-body">
+          <input type="hidden" class="form-control" id="vaccine_id" name="vaccine_id" value="">
+          <div class="form-group">
+                      <label>Вакцины төрөл</label>
+                      <input type="text" readonly class="form-control-plaintext" id="vaccine_name" name = "vaccine_name" value="">
+          </div>
+            
+          <div class="form-group">
+                        <label for="exampleInputEmail1">Вакцинжуулсан огноо</label>
+                        <input type="date" name = "give_date" class="form-control" id="date"  placeholder="Enter date"
+                         >
+                    </div>
+            <div class="form-group">
+                        <label for="exampleInputEmail1">Дархлаажуулалт хийсэн байгууллага</label>
+                        <input type="text" name = "hospital" class="form-control" id="hospital"  placeholder="дархлаажуулалт хийсэн эрүүл мэндийн байгууллага оруулна уу"  
+                        >
+              </div>
+          </div>
+          </div>
+          </div>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Гарах</button>
+        <button type="submit" name="submit" class="btn btn-success">Хадгалах</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
   <!-- delete -->
   <div class="modal  fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -224,13 +346,6 @@
       <div class="container">
 
         <div class="panel panel-default">
-          <!-- <div class="panel-heading" style="background-color: white;">
-            <div class="row">
-              <div class="col-xs-6">
-                  <h4>Хүүхдийн мэдээлэл нэмэх</h4>
-              </div>
-              </div>
-          </div> -->
           <div class="panel-body">
               <input type="hidden" class="form-control" id="datas_id" name="id" value="">
             <text class="center">
@@ -320,13 +435,7 @@
         <div class="container">
       
         <div class="panel panel-default">
-          <!-- <div class="panel-heading" style="background-color: white;">
-            <div class="row">
-              <div class="col-xs-6">
-                  <h4>Хүүхдийн мэдээлэл нэмэх</h4>
-              </div>
-              </div>
-          </div> -->
+          
           <div class="panel-body">
           <div class="form-row">
               <div class="form-group col-md-6">

@@ -44,9 +44,21 @@ class ChartController extends Controller
         $undurs = [];
         $jins = [];
         $nas = [];
+        // { x:0, y: 53.7 },
+
         
-       
+    //    $ii = [];
         $dataGrowth = Growth::all();
+        // foreach($dataGrowth as $mp)
+        // {
+        //     if($dataChild->id === $mp->c_id){
+        //     $ii[] = "{ x:1, y: 1 }";
+        //     }
+        // }
+        // $result = str_replace( array("", "'", ";"), '', $ii[0]);
+        
+        // str_replace(/{|}/gi, ""));
+        // dd(json_encode($ii[0]));
         foreach($dataGrowth as $mp){
             if($dataChild->id === $mp->c_id){
                 $undurs[] = $mp->undur;
@@ -54,7 +66,7 @@ class ChartController extends Controller
                 $nas[] =$mp->age;
             }
             
-        }
+         }
         //  dd(json_encode($undurs));
         return view('chart.index',['child2' => $dataChild,'nas' => $nas,'undurs' => $undurs,'jins' => $jins,'age' => $age,'lenght' => $lenght,'lenght2' => $lenght2,'lenght3' => $lenght3,'lenght_2' => $lenght_2,'lenght_3' => $lenght_3]);
     }
