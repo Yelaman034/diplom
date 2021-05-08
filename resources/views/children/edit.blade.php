@@ -49,10 +49,10 @@
                         <div class="row">
                           <div class="form-group col-12">
                             <label>Хүйс</label>
-                            <select class="form-control" id="Gender" name="gender">
+                            <select class="form-control" id="gender" name="gender">
                                 <option>-- Сонгох --</option>
-                                <option value="male"   @if($child->gender == "эрэгтэй") selected @endif>эрэгтэй</option>
-                                <option value="female" @if($child->gender == "эмэгтэй") selected @endif>эмэгтэй</option>
+                                <option value="Эрэгтэй"   @if($child->gender == "Эрэгтэй") selected @endif>Эрэгтэй</option>
+                                <option value="Эмэгтэй" @if($child->gender == "Эмэгтэй") selected @endif>Эмэгтэй</option>
                               </select>
                               <div class="invalid-feedback">
                               хүйсээ оруулна уу

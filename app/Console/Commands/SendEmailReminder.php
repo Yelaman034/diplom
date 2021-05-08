@@ -63,16 +63,35 @@ class SendEmailReminder extends Command
     //     }
         $childs = Children::all();
         $vaccines = Vaccine::all();
-        // dd($vaccines[1]->day);
-
+        $datag = [];
+        foreach ($childs as $child){
+            foreach ($vaccines as $vac){
+                 $vaccine_day = date('Y/m/d', strtotime('+'.$vac['day'].' day', strtotime($child->date_of_birth))); 
+                 if($vaccine_day === now()->format('Y/m/d')){
+                    $datag[] = array(
+                        "lname" => $child->lname,
+                        "vaccine" => $vac->name,
+                        "user_id" => $child->user_id,
+                        "give_date" => $vaccine_day
+                     );
+                 }
+                 
+            }
+                
+        }
+     
+        // dd($datag);
         $data = [];
+     
         foreach($childs as $child){
             $data[$child->id][] = $child->id;
             $data[$child->id][] = $child->lname;
-            $data[$child->id][] = date('Y/m/d', strtotime("+10 day", strtotime($child->date_of_birth)));
+                $data[$child->id][] = date('Y/m/d', strtotime("+ 10 day", strtotime($child->date_of_birth)));
+          
+            
             $data[$child->id][] = $child->user_id;
         }
-        dd($data);
+        // dd($data);
         $result = [];
         // dd(now()->format('Y/m/d'));
         foreach($data as $db)
@@ -83,9 +102,14 @@ class SendEmailReminder extends Command
             }
         }
         // dd($result);
-        $users = User::find($result); 
-        foreach($users as $user){
-            Mail::to($user)->send(new ReminderEmail($user));
+        // $users = User::find($result); 
+        // foreach($users as $item){
+        //     // dd($user);
+        //     Mail::to($item)->send(new ReminderEmail($item));
+        // }
+        foreach($datag as $item){
+            // dd($item);
+            Mail::to("test@yahoo.com")->send(new ReminderEmail($item));
         }
     }
 }

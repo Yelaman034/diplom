@@ -32,6 +32,19 @@ class AdminController extends Controller
         $data->save();
         return redirect('/vaccine');
     }
+    function updateVaccine(Request $req){
+        $vaccine = Vaccine::find($req->vacc_id);
+        // dd($req->day);
+        $vaccine->update($req->all());
+        return redirect('vaccine');
+    }
+    function deleteVaccine(Request $req){
+        $vaccine = Vaccine::find($req->vacc_id);
+        // dd($vaccine);
+        $vaccine->delete($vaccine);
+
+        return redirect('vaccine');
+    }
 
     function consumer(){
         $consumers = User::all();

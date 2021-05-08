@@ -30,7 +30,7 @@
                           </div>
                           <div class="ticket-detail">
                             <div class="ticket-title">
-                              <h4>{{$vaccine->name}} (tun)</h4>
+                              <h4>{{$vaccine->name}}</h4>
                             </div>
                             <div class="ticket-info">
                               <div class="bullet"></div>

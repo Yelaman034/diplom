@@ -67,7 +67,7 @@
             </form>
 
             <div class="text-center mt-5 text-small">
-              Copyright &copy; Your Company. Made with 💙 by Stisla
+              Copyright &copy; Your Company. 
               <div class="mt-2">
                 <a href="#">Privacy Policy</a>
                 <div class="bullet"></div>

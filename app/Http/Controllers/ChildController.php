@@ -58,7 +58,7 @@ class ChildController extends Controller
     function updateChild(Request $req, $id){
         $childrenFind = Children::find($id);
         $childrenFind->update($req->all());
-        return redirect('/children');
+        return redirect('children/'.$id.'/profile');
     }
     function deleteChild($id){
         $childrenFind = Children::find($id);

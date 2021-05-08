@@ -8,20 +8,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\User;
 use App\Models\Children;
+use App\Models\Vaccine;
 
 class ReminderEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
+    public $role;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($item)
     {
-        $this->user = $user;
+        $this->role = $item;
     }
 
     /**

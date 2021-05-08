@@ -87,12 +87,16 @@ class VaccineController extends Controller
     }
     function vaccineRegUpdateNew(Request $req,$idChild)
     {
-        $vaccineRegFind = VaccineRegInfo::findOrFail($req->vaccinereg_id); 
-        // dd($vaccineRegFind);
+        
+        $vaccineFind = VaccineRegInfo::find($req->vaccinereg_id);
+        $vaccineFind->vaccine_name = $req->vaccine_name;
+        $vaccineFind->give_date = $req->give_date;
+        $vaccineFind->hospital = $req->hospital;
+        $vaccineFind->vaccine_id = $req->vacc_id;
+        $vaccineFind->child_id = $idChild;
+        $vaccineFind->save();
 
-        $vaccineRegFind->update($req->all());
-
-        return back();
+        return redirect('children/'.$idChild.'/profile');
     }
 
     //vaccine information

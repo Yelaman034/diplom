@@ -19,9 +19,9 @@ class GrowthController extends Controller
         $currentDate = new Carbon();
         $bmi =  (double) floor(($req->jin/($req->undur * $req->undur))*10000);
 
-        $age = $req->year + $req->month;
+        // $age = $req->year + $req->month;
         $data = new Growth;
-        $data->age = $age;
+        $data->age = $req->month;
         $data->date_of_visit = $currentDate;
         $data->jin = $req->jin; 
         $data->undur = $req->undur; 
@@ -39,10 +39,17 @@ class GrowthController extends Controller
             'undur' => ['required','numeric'],
         ]);
         // dd($req->all());
-        $growth = Growth::findOrFail($req->id); 
-        // dd($growth);
+        $bmi =  (double) floor(($req->jin/($req->undur * $req->undur))*10000);
 
-        $growth->update($req->all());
+        $growth = Growth::findOrFail($req->id); 
+        $growth->age = $req->age;
+        $growth->jin = $req->jin; 
+        $growth->undur = $req->undur; 
+        $growth->bmi = $bmi;
+        $growth->c_id = $idChild;
+        $growth->save(); 
+
+        // $growth->update($req->all());
 
         return back();
     }

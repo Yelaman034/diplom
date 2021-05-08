@@ -1,12 +1,12 @@
 
 # You have some reminders to follow up. Below are their details:
 
-<h3>{{$user->name}}</h3>
+<h3>Эрүүл мэндийн яам</h3>
 <div>
-|Reminder|User name|Phone| </br>
-|:-------|{{$user->last_name}}|:----|
+
+<p>Таны {{$role['lname']}} хүүхэд {{$role['vaccine']}} -ыг хийлгэнэ үү!!!</p>
 
 
 </div>
 
-<h1>Thanks</h1>
+<h1>!!!!Баярлалаа!!!!</h1>

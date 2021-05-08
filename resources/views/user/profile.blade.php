@@ -4,10 +4,10 @@
 <div class="main-content" style="min-height: 511px;">
         <section class="section">
           <div class="section-header">
-            <h1>Profile</h1>
+            <h1>Профайл</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item">Profile</div>
+              <div class="breadcrumb-item active"><a href="/children">Хүүхэд</a></div>
+              <div class="breadcrumb-item">Профайл</div>
             </div>
           </div>
           <div class="section-body">
@@ -20,7 +20,7 @@
                   <div class="profile-widget-header">
                     <img alt="image" src="{{asset('newTemplate//assets/img/avatar/avatar-1.png')}}" class="rounded-circle profile-widget-picture">
                     <div class="profile-widget-items">
-                      <div class="profile-widget-item">
+                      <!-- <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Posts</div>
                         <div class="profile-widget-item-value">187</div>
                       </div>
@@ -31,7 +31,7 @@
                       <div class="profile-widget-item">
                         <div class="profile-widget-item-label">Following</div>
                         <div class="profile-widget-item-value">2,1K</div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   <div class="profile-widget-description">

@@ -6,7 +6,7 @@
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
           <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+            <input class="form-control" type="search" placeholder="Хайх" aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
             <div class="search-result">         
@@ -28,8 +28,8 @@
             <img alt="image" src="{{asset('newTemplate/assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Сайн уу {{Auth::user()->last_name}}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="/profile" class="dropdown-item has-icon">
+              <!-- <div class="dropdown-title">Logged in 5 min ago</div> -->
+              <!-- <a href="/profile" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Профайл
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
@@ -37,8 +37,8 @@
               </a>
               <a href="features-settings.html" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Тохиргоо
-              </a>
-              <div class="dropdown-divider"></div>
+              </a> -->
+              <!-- <div class="dropdown-divider"></div> -->
               <a href="/logout" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Гарах
               </a>

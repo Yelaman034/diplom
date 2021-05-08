@@ -18,7 +18,7 @@
                   <div class="card-header">
                     <h4>Хүүхдийн жагсаалт</h4>
                     <div class="card-header-action">
-                    <button type="button" class="btn btn-primary btn-sm " data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#exampleModal">
                 Хүүхэд нэмэх
                 </button>
 
@@ -102,8 +102,8 @@
               <label for="studentGender">Хүйс</label>
               <select class="form-control" id="Gender" name="gender" required>
                 <option>-- Сонгох --</option>
-                <option value="male">эрэгтэй</option>
-                <option value="female">эмэгтэй</option>
+                <option value="Эрэгтэй">Эрэгтэй</option>
+                <option value="Эмэгтэй">Эмэгтэй</option>
               </select>
             </div>
             <div class="form-group">

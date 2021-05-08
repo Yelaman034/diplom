@@ -36,6 +36,7 @@ Route::post('/register',[AuthController::class,'register']);
 //Child
 Route::group(['middleware' => ['auth','checkRole:user']],function(){
 
+    //user
     Route::get('/profile',[UserProfileController::class,'userProfile']);
     Route::post('/profile/{id}/update',[UserProfileController::class,'userUpdate']);
 
@@ -91,6 +92,10 @@ Route::group(['middleware' => ['auth','checkRole:admin,user']],function(){
     Route::get('/admin',[AdminController::class,'admin']);
     Route::get('/vaccine',[AdminController::class,'vaccine']);
     Route::post('/vaccine/create',[AdminController::class,'addVaccine']);
+
+    //vaccine update
+    Route::post('/vaccine/update',[AdminController::class,'updateVaccine']);
+    Route::post('/vaccine/delete',[AdminController::class,'deleteVaccine']);
 
     Route::get('/consumer',[AdminController::class,'consumer']);
 });

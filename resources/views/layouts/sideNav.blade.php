@@ -14,12 +14,8 @@
             <li><a class="nav-link" href="/vaccines"><i class="fas fa-syringe"></i> <span>Вакцинууд</span></a></li>
 
             <li class="menu-header">Миний бүртгэл</li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Миний бүртгэл</span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/profile">Профайл</a></li>
-                </ul>
-              </li>
+            <li><a class="nav-link" href="/profile"><i class="fas fa-user"></i> <span>Миний бүртгэл</span></a></li>
+            
             </ul>
             @endif
             @if(auth()->user()->role == 'admin')
